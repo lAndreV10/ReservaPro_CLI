@@ -78,8 +78,3 @@ Cada cita se almacena en `citas.json` con el siguiente formato:
 }
 ```
 
----
-
-## Autor
-
-Desarrollado como proyecto de portafolio.
