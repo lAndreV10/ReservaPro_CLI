@@ -1,5 +1,5 @@
 from negocio import valFecha, valHora, filtrar_por_fecha
-from datos import agregar_cita, leer_citas
+from datos import agregar_cita, leer_citas, eliminar_cita
 
 def menu():
     print("==== ReservaPro  CLI ====")
@@ -79,7 +79,43 @@ def main():
                 input("\nPresione ENTER para regresar al menu principal...")
             
             elif opcion == "3":
-                print("\n[Funcionalidad en desarrollo]: Aquí cancelaremos una reserva.")
+                print("\n--- Cancelar cita ---")
+
+                while True:
+                    fecha = input("Ingresa la fecha de la cita a cancelar (AAAA-MM-DD): ").strip()
+                    if valFecha(fecha):
+                        break
+                    else:
+                        print("Error: La fecha no es válida. Intente de nuevo.")
+
+                citas = leer_citas()
+                resultado = filtrar_por_fecha(citas, fecha)
+
+                if len(resultado) == 0:
+                    print(f"\nNo hay citas registradas para el {fecha}.")
+                else:
+                    print(f"\nCitas para el {fecha}:")
+                    print("----------------------------")
+                    for i, cita in enumerate(resultado):
+                        print(f"{i + 1}. {cita['nombre']} - {cita['servicio']} a las {cita['hora']}")
+                    print("----------------------------")
+
+                    numero = input("\nIngresa el número de la cita a cancelar: ").strip()
+
+                    if numero.isdigit() and 1 <= int(numero) <= len(resultado):
+                        cita_elegida = resultado[int(numero) - 1]
+                        confirmacion = input(f"\n¿Seguro que deseas cancelar la cita de {cita_elegida['nombre']}? (s/n): ").strip().lower()
+
+                        if confirmacion == "s":
+                            indice_real = citas.index(cita_elegida)
+                            eliminar_cita(indice_real)
+                            print("\nCita cancelada exitosamente.")
+                        else:
+                            print("\nCancelación abortada.")
+                    else:
+                        print("\nNúmero no válido.")
+
+                input("\nPresione ENTER para regresar al menu principal...")
             else:
                 print("\nOpción no válida. Por favor, intente de nuevo con un número del 1 al 4.")
 

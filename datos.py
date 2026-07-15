@@ -16,4 +16,9 @@ def agregar_cita(cita):
     citas = leer_citas()
     citas.append(cita)
     guardar_citas(citas)
+
+def eliminar_cita(indice):
+    citas = leer_citas()
+    citas.pop(indice)
+    guardar_citas(citas)
     
