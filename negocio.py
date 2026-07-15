@@ -13,3 +13,10 @@ def valHora(horaTexto):
         return True
     except ValueError:
         return False
+
+def filtrar_por_fecha(citas, fecha):
+    citas_del_dia = []
+    for cita in citas:
+        if cita["fecha"] == fecha:
+            citas_del_dia.append(cita)
+    return citas_del_dia
