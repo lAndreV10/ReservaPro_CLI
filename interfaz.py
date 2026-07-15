@@ -18,9 +18,18 @@ def main():
                 break
             elif opcion == "1":
                 print("--- Nueva Reserva ---")
-                
-                cliente = input("Nombre del cliente: ").strip()
-                servicio = input("Servicio a realizar: ").strip()
+
+                while True:
+                    cliente = input("Nombre del cliente: ").strip()
+                    if cliente:
+                        break
+                    print("Error: El nombre no puede estar vacío. Intente de nuevo.")
+
+                while True:
+                    servicio = input("Servicio a realizar: ").strip()
+                    if servicio:
+                        break
+                    print("Error: El servicio no puede estar vacío. Intente de nuevo.")
 
                 while True:
                     fecha = input("Fecha de la cita (AAAA-MM-DD): ").strip()
