@@ -1,26 +1,26 @@
-# ReservaPro CLI
+# ReservaPro
 
-Sistema de gestión de citas por consola desarrollado en Python. Permite crear, consultar y cancelar reservas de forma sencilla desde la terminal.
+Sistema de gestión de citas desarrollado en Python. Disponible en dos versiones: aplicación de consola (CLI) y aplicación web con Flask.
 
 ---
 
 ## Descripción
 
-ReservaPro CLI es una aplicación de línea de comandos orientada a negocios que necesitan gestionar citas con clientes (peluquerías, consultorios, talleres, etc.). Los datos se persisten en un archivo JSON local.
+ReservaPro es un sistema orientado a negocios que necesitan gestionar citas con clientes (peluquerías, consultorios, talleres, etc.). Permite crear, consultar y cancelar reservas. Los datos se guardan en un archivo JSON local.
 
 ---
 
 ## Tecnologías
 
 - Python 3.x
+- Flask 3.1.3
+- Bootstrap 5
 - Módulo `json` (librería estándar)
 - Módulo `datetime` (librería estándar)
 
-No requiere instalar dependencias externas.
-
 ---
 
-## Instalación y ejecución
+## Instalación
 
 1. Clona el repositorio:
 ```bash
@@ -28,7 +28,22 @@ git clone https://github.com/tu-usuario/ReservaPro.git
 cd ReservaPro
 ```
 
-2. Ejecuta el programa:
+2. Instala las dependencias:
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Ejecución
+
+**Versión Web (Flask)**
+```bash
+python app.py
+```
+Luego abre el navegador en `http://127.0.0.1:5000`
+
+**Versión CLI**
 ```bash
 python interfaz.py
 ```
@@ -37,12 +52,11 @@ python interfaz.py
 
 ## Funcionalidades
 
-| Opción | Descripción |
+| Función | Descripción |
 |--------|-------------|
-| 1. Crear nueva cita | Registra una cita con nombre, servicio, fecha y hora |
-| 2. Ver citas del día | Consulta todas las citas de una fecha específica |
-| 3. Cancelar cita | Elimina una cita existente con confirmación previa |
-| 4. Salir | Cierra el programa |
+| Crear cita | Registra una cita con nombre, servicio, fecha y hora |
+| Ver citas del día | Consulta todas las citas de una fecha específica |
+| Cancelar cita | Elimina una cita existente |
 
 ---
 
@@ -52,14 +66,26 @@ El proyecto sigue una arquitectura en 3 capas:
 
 ```
 ReservaPro/
-├── interfaz.py   # Capa de presentación: menú e interacción con el usuario
-├── negocio.py    # Capa de lógica: validaciones y filtros
-├── datos.py      # Capa de datos: lectura y escritura en citas.json
+├── app.py            # Servidor web Flask (rutas y vistas)
+├── interfaz.py       # Versión CLI (consola)
+├── negocio.py        # Lógica: validaciones y filtros
+├── datos.py          # Datos: lectura y escritura en citas.json
+├── templates/        # Páginas HTML
+│   ├── base.html
+│   ├── index.html
+│   ├── crear.html
+│   ├── ver.html
+│   └── cancelar.html
+├── static/
+│   └── css/
+│       └── style.css
+├── requirements.txt
 ├── .gitignore
 └── README.md
 ```
 
-- **`interfaz.py`** — Captura inputs del usuario, muestra resultados y coordina el flujo
+- **`app.py`** — Maneja las rutas web y conecta la interfaz con la lógica
+- **`interfaz.py`** — Versión de consola del sistema
 - **`negocio.py`** — Valida fechas y horas, filtra citas por fecha
 - **`datos.py`** — Gestiona la persistencia en `citas.json`
 
@@ -78,3 +104,8 @@ Cada cita se almacena en `citas.json` con el siguiente formato:
 }
 ```
 
+---
+
+## Autor
+
+Desarrollado como proyecto de portafolio.

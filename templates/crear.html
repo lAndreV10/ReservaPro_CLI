@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="reservapro-card card p-4">
+            <div class="reservapro-card-header card-header bg-primary text-white mb-4">
+                Nueva Cita
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/crear">
+
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre del cliente</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="servicio" class="form-label">Servicio</label>
+                        <input type="text" class="form-control" id="servicio" name="servicio" placeholder="Ej: Corte de cabello" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha (AAAA-MM-DD)</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="hora" class="form-label">Hora (HH:MM)</label>
+                        <input type="time" class="form-control" id="hora" name="hora" required>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+                        <button type="submit" class="btn btn-reservapro-primary">Guardar Cita</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="text-center mb-5">
+    <h1 class="fw-bold mt-3">Bienvenido a ReservaPro</h1>
+    <p class="text-muted">Gestiona tus citas de forma rápida y sencilla</p>
+</div>
+
+<div class="row justify-content-center g-4">
+
+    <div class="col-md-4">
+        <div class="reservapro-card card h-100 text-center p-4">
+            <div class="reservapro-card-header card-header bg-primary text-white mb-3">
+                Nueva Cita
+            </div>
+            <div class="card-body">
+                <p class="card-text text-muted">Registra una nueva cita con nombre, servicio, fecha y hora.</p>
+                <a href="/crear" class="btn btn-reservapro-primary mt-2">Crear Cita</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="reservapro-card card h-100 text-center p-4">
+            <div class="reservapro-card-header card-header bg-success text-white mb-3">
+                Ver Citas del Día
+            </div>
+            <div class="card-body">
+                <p class="card-text text-muted">Consulta todas las citas agendadas para una fecha específica.</p>
+                <a href="/ver" class="btn btn-reservapro-primary mt-2">Ver Citas</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="reservapro-card card h-100 text-center p-4">
+            <div class="reservapro-card-header card-header bg-danger text-white mb-3">
+                Cancelar Cita
+            </div>
+            <div class="card-body">
+                <p class="card-text text-muted">Elimina una cita existente de forma rápida y segura.</p>
+                <a href="/cancelar" class="btn btn-reservapro-danger mt-2">Cancelar Cita</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

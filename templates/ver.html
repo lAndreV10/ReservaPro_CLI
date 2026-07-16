@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="reservapro-card card p-4">
+            <div class="reservapro-card-header card-header bg-success text-white mb-4">
+                Ver Citas del Día
+            </div>
+            <div class="card-body">
+
+                <form method="POST" action="/ver" class="d-flex gap-3 mb-4">
+                    <input type="date" class="form-control" name="fecha" required>
+                    <button type="submit" class="btn btn-reservapro-primary">Buscar</button>
+                </form>
+
+                {% if fecha %}
+                    {% if citas %}
+                        <h6 class="text-muted mb-3">Citas para el {{ fecha }}:</h6>
+                        <table class="table tabla-citas">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Servicio</th>
+                                    <th>Hora</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cita in citas %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ cita.nombre }}</td>
+                                    <td>{{ cita.servicio }}</td>
+                                    <td>{{ cita.hora }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-warning">
+                            No hay citas registradas para el {{ fecha }}.
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
